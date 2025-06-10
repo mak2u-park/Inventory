@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         {
             new PlayerData { playerName = "Knight", level = 10, gold = 5000, strength = 30, defense = 20, health = 200, critical = 10, equippedItemNames = new List<string>{"Sword"} },
             new PlayerData { playerName = "Dwarf", level = 10, gold = 2000, strength = 40, defense = 25, health = 120, critical = 20, equippedItemNames = new List<string>{"Axe"} },
-            new PlayerData { playerName = "Wizzard", level = 10, gold = 500, strength = 10, defense = 20, health = 80, critical = 50, equippedItemNames = new List<string>{"Bow"} }
+            new PlayerData { playerName = "Wizzard", level = 10, gold = 500, strength = 10, defense = 20, health = 80, critical = 50, equippedItemNames = new List<string>{"Staff"} }
         };
     }
     

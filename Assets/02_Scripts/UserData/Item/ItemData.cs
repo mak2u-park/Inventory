@@ -6,7 +6,9 @@ public enum ItemType
 {
     Weapon,
     Armor,
-    Ring
+    Ring,
+    Artifact,
+    Pet
 }
 
 public enum StatType

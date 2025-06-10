@@ -65,8 +65,10 @@ public class ItemCreator : EditorWindow
     {
         ItemData itemData = new ItemData();
         itemData.itemName = itemName;
+        itemData.itemDescription = itemDescription;
         itemData.itemType = itemType;
         itemData.stats = statEntries; 
+        itemData.image = itemImage;
         
         AssetDatabase.CreateAsset(itemData, $"Assets/03_Prefabs/ScriptableObjects/{itemName}.asset" );
         AssetDatabase.SaveAssets();

@@ -97,18 +97,14 @@ public class UIInventory : MonoBehaviour
     // 장착 / 장착 해제 컨트롤 버튼
     public void EquipControllButton()
     {
-        Debug.Log("1");
         if (selectedSlot != null)
         {
-            Debug.Log("2");
             if (!selectedSlot.isEquipped)
             {
-                Debug.Log("3");
                 selectedSlot.EquipItem();
             }
             else
             {
-                Debug.Log("4");
                 selectedSlot.UnequipItem();
             }
             RefreshUI(); 

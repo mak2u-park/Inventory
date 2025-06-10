@@ -8554,6 +8554,14 @@ MonoBehaviour:
   _itemList:
   - {fileID: 11400000, guid: 56c74b36cedb8094db03a7fbc51e898c, type: 2}
   - {fileID: 11400000, guid: 12690dab58a87e54799c603efc270b8a, type: 2}
+  - {fileID: 11400000, guid: 6a3441cf6daa1ef4fa4736f195d33d53, type: 2}
+  - {fileID: 11400000, guid: 89011709e3828154fa7d08c182874270, type: 2}
+  - {fileID: 11400000, guid: 8e382d5b4a183ba4f9d3f0ca90cb2be7, type: 2}
+  - {fileID: 11400000, guid: 5a8b0c1ff82f8eb49904e08b1fa808f4, type: 2}
+  - {fileID: 11400000, guid: 307a59e7ec673634ca0f0f05922f5642, type: 2}
+  - {fileID: 11400000, guid: 78e48de0b77b6fc43b45ea3ba9743eaa, type: 2}
+  - {fileID: 11400000, guid: 5bd0e6dfe38ecea488eabef99a3e6e26, type: 2}
+  - {fileID: 11400000, guid: c5cce07c03d16354ea1024aee7e48cda, type: 2}
 --- !u!1 &2114488512
 GameObject:
   m_ObjectHideFlags: 0
