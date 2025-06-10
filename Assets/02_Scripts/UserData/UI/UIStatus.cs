@@ -10,7 +10,6 @@ public class UIStatus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _defense;
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _critical;
-    [SerializeField] private Button _backButton;
     
     public Character character;
 
@@ -26,11 +25,5 @@ public class UIStatus : MonoBehaviour
         _defense.text = character.defense.ToString();
         _health.text = character.health.ToString();
         _critical.text = character.critical.ToString();
-    }
-
-    public void OnBackButton()
-    {
-        UpdateStatusUI();
-        this.gameObject.SetActive(false);
     }
 }

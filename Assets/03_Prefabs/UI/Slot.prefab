@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9333334, g: 0.85098046, b: 0.75294125, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
   _equip: {fileID: 8330492444507397715}
   _index: 0
   data: {fileID: 11400000, guid: 56c74b36cedb8094db03a7fbc51e898c, type: 2}
-  character: {fileID: 0}
+  player: {fileID: 0}
   isEquipped: 0
 --- !u!114 &3267044109273768157
 MonoBehaviour:

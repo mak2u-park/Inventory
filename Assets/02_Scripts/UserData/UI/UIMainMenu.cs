@@ -10,13 +10,22 @@ public class UIMainMenu : MonoBehaviour
     
     public void OnInventoryUI()
     {
-        UIManager.instance._uiInventory.gameObject.SetActive(true);
+        bool isActive = UIManager.instance._uiInventory.gameObject.activeSelf;
+        UIManager.instance._uiInventory.gameObject.SetActive(!isActive);
+        if (!isActive)
+        {
+            UIManager.instance._uiInventory.RefreshUI();
+        }
     }
 
     public void OnStatusUI()
     {
-        UIManager.instance._uiStatus.gameObject.SetActive(true);
-        UIManager.instance._uiStatus.UpdateStatusUI();
+        bool isActive = UIManager.instance._uiStatus.gameObject.activeSelf;
+        UIManager.instance._uiStatus.gameObject.SetActive(!isActive);
+        if (!isActive)
+        {
+            UIManager.instance._uiStatus.UpdateStatusUI();
+        }
     }
 
     

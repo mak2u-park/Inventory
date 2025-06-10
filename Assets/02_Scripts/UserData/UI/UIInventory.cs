@@ -12,7 +12,6 @@ public class UIInventory : MonoBehaviour
     public Player player;
     public Button _equipButton;
     public Button _unequipButton;
-    [SerializeField] private Button _backButton;
     [SerializeField] private GameObject _slotPrefabs;
     [SerializeField] private Transform _slotsParent;
     
@@ -25,6 +24,7 @@ public class UIInventory : MonoBehaviour
     private void Start()
     {
         player = UIManager.instance._player;
+        _itemList = GameManager.instance.allItemDatas;
         RefreshUI();
     }
 
@@ -85,14 +85,6 @@ public class UIInventory : MonoBehaviour
         }
             
     }
-    
-    // 뒤로가기 버튼
-    public void OnBackButton()
-    {
-        selectedSlot = null;
-        RefreshUI();
-        this.gameObject.SetActive(false);
-    }
 
     // 장착 / 장착 해제 컨트롤 버튼
     public void EquipControllButton()
@@ -107,8 +99,9 @@ public class UIInventory : MonoBehaviour
             {
                 selectedSlot.UnequipItem();
             }
-            RefreshUI(); 
-            UpdateEquipControllButton();
+            RefreshUI();  // InventoryUI 업데이트
+            UpdateEquipControllButton(); // 장착 / 해제 버튼 업데이트
+            UIManager.instance._uiStatus.UpdateStatusUI(); // 장비 장착 / 해제 시 스탯 업데이트
         }
     }
     

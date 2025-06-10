@@ -89,7 +89,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         player.EquipItem(data);
         // isEquipped = !isEquipped;
-        Debug.Log(isEquipped);
+
         _equip.gameObject.SetActive(isEquipped);
     }
 
