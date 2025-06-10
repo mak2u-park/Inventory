@@ -21,7 +21,7 @@ public class UIInventory : MonoBehaviour
     
     private List<InventorySlot> _slots = new List<InventorySlot>();
     [SerializeField] private List<ItemData> _itemList = new List<ItemData>();
-
+    
     private void Start()
     {
         player = UIManager.instance._player;
@@ -42,6 +42,8 @@ public class UIInventory : MonoBehaviour
 
     public void RefreshUI()
     {
+        player = UIManager.instance._player;
+        
         // 이전에 선택된 아이템 기억 (존재한다면)
         ItemData prevSelectedData = selectedSlot != null ? selectedSlot.data : null;
         
@@ -59,16 +61,6 @@ public class UIInventory : MonoBehaviour
             GameObject newSlotObj = Instantiate(_slotPrefabs, _slotsParent);
             InventorySlot newSlot = newSlotObj.GetComponent<InventorySlot>();
             newSlot.data = _itemList[i];
-            if (player == null)
-            {
-                Debug.LogError("UIInventory.player가 null입니다!");
-                continue;
-            }
-            if (newSlot.data == null)
-            {
-                Debug.LogWarning($"_itemList[{i}]가 null입니다!");
-                continue;
-            }
             newSlot.isEquipped = player.IsEquipped(newSlot.data);
             newSlot.Set();
             
