@@ -9,7 +9,7 @@ public class UIInventory : MonoBehaviour
     public GameObject _tooltipUI;
     public TextMeshProUGUI _itemName;
     public TextMeshProUGUI _itemDescription;
-    public Character character;
+    public Player player;
     public Button _equipButton;
     public Button _unequipButton;
     [SerializeField] private Button _backButton;
@@ -24,6 +24,7 @@ public class UIInventory : MonoBehaviour
 
     private void Start()
     {
+        player = UIManager.instance._player;
         RefreshUI();
     }
 
@@ -39,7 +40,7 @@ public class UIInventory : MonoBehaviour
         RefreshUI();
     }
 
-    private void RefreshUI()
+    public void RefreshUI()
     {
         // 이전에 선택된 아이템 기억 (존재한다면)
         ItemData prevSelectedData = selectedSlot != null ? selectedSlot.data : null;
@@ -58,9 +59,17 @@ public class UIInventory : MonoBehaviour
             GameObject newSlotObj = Instantiate(_slotPrefabs, _slotsParent);
             InventorySlot newSlot = newSlotObj.GetComponent<InventorySlot>();
             newSlot.data = _itemList[i];
-            
-            // 캐릭터의 장착 아이템 리스트에서 장착하고 있는지를 판별
-            newSlot.isEquipped = character.IsEquipped(newSlot.data);
+            if (player == null)
+            {
+                Debug.LogError("UIInventory.player가 null입니다!");
+                continue;
+            }
+            if (newSlot.data == null)
+            {
+                Debug.LogWarning($"_itemList[{i}]가 null입니다!");
+                continue;
+            }
+            newSlot.isEquipped = player.IsEquipped(newSlot.data);
             newSlot.Set();
             
             // 이전에 선택했던 아이템이면 selectedSlot으로 다시 지정

@@ -17,7 +17,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private int _index;
     
     public ItemData data;
-    public Character character;
+    public Player player;
     public bool isEquipped = false;
 
     private void Start()
@@ -25,7 +25,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         _uiManager = UIManager.instance;
         _uiInventory = UIManager.instance._uiInventory;
         _uiInventory._tooltipUI.gameObject.SetActive(false);
-        character = _uiInventory.character;
+        player = _uiInventory.player;
     }
     private void Update()
     {
@@ -87,7 +87,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // 아이템 장착 / 해체
     public void EquipItem()
     {
-        character.EquipItem(data);
+        player.EquipItem(data);
         // isEquipped = !isEquipped;
         Debug.Log(isEquipped);
         _equip.gameObject.SetActive(isEquipped);
@@ -95,7 +95,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void UnequipItem()
     {
-        character.UnequipItem(data);
+        player.UnequipItem(data);
         isEquipped = !isEquipped;
         _equip.gameObject.SetActive(isEquipped);
     }

@@ -21,7 +21,7 @@ public class UIStatus : MonoBehaviour
     
     public void UpdateStatusUI()
     {
-        character = UIManager.instance._character;
+        character = UIManager.instance._player;
         _strength.text = character.strength.ToString();
         _defense.text = character.defense.ToString();
         _health.text = character.health.ToString();

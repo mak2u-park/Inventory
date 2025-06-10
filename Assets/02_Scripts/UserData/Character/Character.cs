@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public List<ItemData> equippedItems = new List<ItemData>(); // 장착된 아이템 목록
+    // 장착된 아이템 목록
+    public List<ItemData> equippedItems = new List<ItemData>(); 
     
     public bool IsEquipped(ItemData item) => equippedItems.Contains(item);
 
@@ -12,8 +13,6 @@ public class Character : MonoBehaviour
     public float defense { get; protected set; } = 40f;
     public float health { get; protected set; } = 100f;
     public float critical { get; protected set; } = 25f;
-
-    
     
     
     // 아이템 장착 시 모든 스텟 적용
