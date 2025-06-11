@@ -12,7 +12,7 @@ public class Player : Character
     // player 인스턴스에 데이터를 적용, 불러오기 기능
     public void LoadData(PlayerData data, List<ItemData> allItemDatas)
     {
-        // 변수 명이 같아 구분하기 위해 this. 작성
+        // 변수 명이 같아 구분하기 위해 this 작성
         this.playerName = data.playerName;
         this.level = data.level;
         this.gold = data.gold;

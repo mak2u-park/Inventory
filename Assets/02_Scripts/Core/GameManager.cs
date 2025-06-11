@@ -48,5 +48,7 @@ public class GameManager : MonoBehaviour
             new PlayerData { playerName = "Wizzard", level = 8, gold = 500, strength = 30, defense = 20, health = 80, critical = 60, equippedItemNames = new List<string>{"Staff"} }
         };
     }
+
+    
     
 }
