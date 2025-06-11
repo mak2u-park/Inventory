@@ -1,4 +1,4 @@
 ﻿playerName,level,gold,strength,defense,health,critical,equippedItemNames
-Knight,10,5000,45,20,200,10,Sword
+Knight,10,5000,40,30,210,20,Katana;MiniAngel
 Dwarf,15,10000,50,25,120,20,Axe
 Wizzard,8,500,30,20,80,60,Staff;MiniDevil
