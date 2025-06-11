@@ -21,8 +21,6 @@ public class Player : Character
         this.health = data.health;
         this.critical = data.critical;
         this.equippedItems.Clear();
-        
-        
 
         foreach (var name in data.equippedItemNames)
         {
