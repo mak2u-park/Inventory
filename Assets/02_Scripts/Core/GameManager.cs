@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -39,10 +40,8 @@ public class GameManager : MonoBehaviour
         Dwarf.LoadData(LoadAllPlayerData()[1], allItemDatas);
         Wizzard.LoadData(LoadAllPlayerData()[2], allItemDatas);
         */
-        
-        Knight.LoadData(LoadPlayerDataFromStreamingAssets()[0], allItemDatas);
-        Dwarf.LoadData(LoadPlayerDataFromStreamingAssets()[1], allItemDatas);
-        Wizzard.LoadData(LoadPlayerDataFromStreamingAssets()[2], allItemDatas);
+
+        Load();
     }
 
     /*
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
     */
     
     
-    // StreamingAssets을 통해 PlayerData.csv 파일 읽어오기
+    // StreamingAssets를 통해 PlayerData.csv 파일 읽어오기
     public List<PlayerData> LoadPlayerDataFromStreamingAssets()
     {
         List<PlayerData> playerDatas = new List<PlayerData>();
@@ -97,6 +96,48 @@ public class GameManager : MonoBehaviour
         }
         return playerDatas;
         
+    }
+
+    // StreamingAssets를 통해 PlayerData를 PlayerData.csv 파일에 저장하기
+    public void SavePlayerDataToStreamingAssets(List<PlayerData> playerDatas)
+    {
+        // 여러 경로 문자열 합치기, 경로 : Application.streamingAssetsPath/PlayerData.csv
+        string path = Path.Combine(Application.streamingAssetsPath, "PlayerData.csv");
+        
+        // 헤더
+        StringBuilder header = new StringBuilder(); // 문자열을 더할때 더 효율적으로 사용 가능, 임시 문자열 객체 생성을 줄여 가비지 컬렉터 호출 감소
+        header.AppendLine("playerName,level,gold,strength,defense,health,critical,equippedItemNames");
+
+        foreach (PlayerData datas in playerDatas)
+        {
+            // equippedItemNames는 ;으로 각각의 아이템들을 구분
+            string equippedItems = string.Join(";", datas.equippedItemNames ?? new List<string>()); // ??연산자, datas.equippedItemNames가 null이 아니면 그대로 사용, null이면 new List<string> 
+            header.AppendLine($"{datas.playerName},{datas.level},{datas.gold},{datas.strength},{datas.defense},{datas.health},{datas.critical},{equippedItems}");
+            
+            File.WriteAllText(path, header.ToString(), Encoding.UTF8); // UTF-8으로 인코딩
+            
+        }
+    }
+    
+    // StreamingAssets를 통해 가져온 PlayerData List를 각각 오브젝트에 적용
+    private void Load()
+    {
+        Knight.LoadData(LoadPlayerDataFromStreamingAssets()[0], allItemDatas);
+        Dwarf.LoadData(LoadPlayerDataFromStreamingAssets()[1], allItemDatas);
+        Wizzard.LoadData(LoadPlayerDataFromStreamingAssets()[2], allItemDatas);
+    }
+    
+    
+    // Player에서 player 인스턴스의 현재 정보를 PlayerData로 변환하고, 그 Data를 csv 파일에 저장
+    public void Save()
+    {
+        List<PlayerData> playerDatas = new List<PlayerData>
+        {
+            Knight.SaveData(),
+            Dwarf.SaveData(),
+            Wizzard.SaveData()
+        };
+        SavePlayerDataToStreamingAssets(playerDatas);
     }
     
 }
